@@ -1,0 +1,34 @@
+body {
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    overflow: hidden;
+}
+
+.app {
+    // background-color: lightgreen;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    display: grid;
+    grid-template-areas: "header header"
+                         "sidebar content";
+    grid-template-columns: 120px 1fr;
+    grid-template-rows: 60px 1fr;
+
+    header, section, aside {
+        border: solid 1px red;
+    }
+
+    &__header {
+        grid-area: header;
+    }
+    &__sidebar {
+        grid-area: sidebar;
+    }
+    &__content {
+        grid-area: content;
+    }
+}
