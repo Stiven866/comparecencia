@@ -2,7 +2,9 @@ import React from "react";
 import { Row, Col, Button, Card, CardBody, Media } from "reactstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faFileAlt } from "@fortawesome/free-regular-svg-icons";
+import { faCalendar, faFileAlt, faPlusSquare} from "@fortawesome/free-regular-svg-icons";
+import CenteredModal from "../../../modal-card";
+
 
 
 import avatar1 from "../../../../assets/img/avatars/avatar.jpg";
@@ -15,7 +17,8 @@ import unsplash1 from "../../../../assets/img/photos/unsplash-1.jpg";
 import unsplash2 from "../../../../assets/img/photos/unsplash-2.jpg";
 import unsplash3 from "../../../../assets/img/photos/unsplash-3.jpg";
 
-const Activity = ({title, description, img, time}) => (
+
+const Activity = ({title, shortDescription, longDescription, img, time}) => (
   <Card className="flex-fill">
     <CardBody>
       <Media>
@@ -30,19 +33,12 @@ const Activity = ({title, description, img, time}) => (
               <img src={img} className="img-fluid" alt="Unsplash" />
             </div>
             <div className="col-md-4 col-12">
-              <small className="text-muted">{description}</small>
+              <small className="text-muted">{shortDescription}</small>
             </div>
           </Row>
 
           <br />
-          <Button size="sm" color="danger" className="mt-1 rounded-left rounded-right">
-            <FontAwesomeIcon icon={faHeart} fixedWidth /> 
-            Like
-          </Button>
-          <Button size="sm" color="danger" className="mt-1 ml-1 rounded-left rounded-right">
-          <FontAwesomeIcon icon={faHeart} fixedWidth /> 
-          Like
-        </Button>
+              <CenteredModal icon={faCalendar} longDescription={longDescription}/>
         </Media>
       </Media>
     </CardBody>

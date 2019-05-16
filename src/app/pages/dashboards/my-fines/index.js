@@ -11,11 +11,12 @@ const Social = () => (
   <Container className="p-0">
     <Row>
       <Col lg="12">
-        {fines.map(({ id, title, description, img, time })=>
+        {fines.map(({ id, title, shortDescription, longDescription, img, time })=>
           <Fine 
             key={id} 
             title={title} 
-            description={description}
+            shortDescription={shortDescription}
+            longDescription={longDescription}
             img={img}
             time={time}
             />)}
