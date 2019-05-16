@@ -15,16 +15,21 @@ import {
 } from "reactstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCalendar, faPlusSquare} from "@fortawesome/free-regular-svg-icons";
+import Table from "../table";
+import Calendar from "../calendar";
 
 
 const buttonsCard = [
   {
     name: "AGENDAR COMPARECENCIA",
     value: "primary",
+    icon: faCalendar
   },
   {
     name: "VER MAS",
     value: "primary",
+    icon: faPlusSquare
   },
 ];
 
@@ -51,9 +56,9 @@ class CenteredModal extends React.Component {
   }
 
   render() {
-    const { icon, longDescription } =this.props;
+    const { longDescription } =this.props;
     return (
-      <div>
+      <div className="container-fluid">
       {buttonsCard.map((button, index) => (
         <React.Fragment key={index}>
           <Button
@@ -61,7 +66,7 @@ class CenteredModal extends React.Component {
             onClick={() => this.toggle(index)}
             className="mr-1"
           >
-            <FontAwesomeIcon icon={icon} fixedWidth /> 
+            <FontAwesomeIcon icon={button.icon} fixedWidth /> 
             {button.name}
           </Button>
           <Modal
@@ -69,11 +74,8 @@ class CenteredModal extends React.Component {
             toggle={() => this.toggle(index)}
             centered
           >
-            <ModalHeader toggle={() => this.toggle(index)}>
-              Centered modal
-            </ModalHeader>
-            <ModalBody className="text-center m-3">
-              <p className="mb-0">{longDescription}</p>
+            <ModalBody className="text-center m-1">
+              {button.name === "AGENDAR COMPARECENCIA" ? <Calendar/>: <Table details={longDescription}/> }
             </ModalBody>
             <ModalFooter>
               <Button color="primary" onClick={() => this.toggle(index)}>
@@ -93,8 +95,5 @@ class CenteredModal extends React.Component {
     );
   }
 }
-
-
-
 
 export default CenteredModal;

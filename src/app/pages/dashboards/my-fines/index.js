@@ -7,7 +7,7 @@ import Following from "./Following";
 import Activities from "./Activities";
 import {fines} from "../../../storage/data"
 
-const Social = () => (
+const MyFines = () => (
   <Container className="p-0">
     <Row>
       <Col lg="12">
@@ -25,4 +25,4 @@ const Social = () => (
   </Container>
 );
 
-export default Social;
+export default MyFines;

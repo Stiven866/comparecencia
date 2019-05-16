@@ -1,21 +1,9 @@
 import React from "react";
-import { Row, Col, Button, Card, CardBody, Media } from "reactstrap";
+import { Row, Card, CardBody, Media } from "reactstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendar, faFileAlt, faPlusSquare} from "@fortawesome/free-regular-svg-icons";
+import { faFileAlt } from "@fortawesome/free-regular-svg-icons";
 import CenteredModal from "../../../modal-card";
-
-
-
-import avatar1 from "../../../../assets/img/avatars/avatar.jpg";
-import avatar2 from "../../../../assets/img/avatars/avatar-2.jpg";
-import avatar4 from "../../../../assets/img/avatars/avatar-4.jpg";
-import avatar5 from "../../../../assets/img/avatars/avatar-5.jpg";
-
-import fotoMulta from "../../../../assets/img/photos/foto-multa.jpg";
-import unsplash1 from "../../../../assets/img/photos/unsplash-1.jpg";
-import unsplash2 from "../../../../assets/img/photos/unsplash-2.jpg";
-import unsplash3 from "../../../../assets/img/photos/unsplash-3.jpg";
 
 
 const Activity = ({title, shortDescription, longDescription, img, time}) => (
@@ -29,16 +17,16 @@ const Activity = ({title, shortDescription, longDescription, img, time}) => (
             <strong>{title}</strong>
           </p>
           <Row>
-            <div className="col-md-4 col-12">
+            <div className="col-md-4 col-12 mt-2">
               <img src={img} className="img-fluid" alt="Unsplash" />
             </div>
-            <div className="col-md-4 col-12">
-              <small className="text-muted">{shortDescription}</small>
+            <div className="col-md-8 col-12 center mt-4 mb-4">
+              <h5 className="text-muted">{shortDescription}</h5>
             </div>
           </Row>
 
           <br />
-              <CenteredModal icon={faCalendar} longDescription={longDescription}/>
+              <CenteredModal longDescription={longDescription}/>
         </Media>
       </Media>
     </CardBody>
