@@ -31,7 +31,7 @@ const Navigation = () => (
   <Card>
     <CardHeader>
       <CardTitle tag="h5" className="mb-0">
-        Profile Settings
+        Configuraciones de Perfil
       </CardTitle>
     </CardHeader>
     <ListGroup flush>
@@ -41,45 +41,29 @@ const Navigation = () => (
       <ListGroupItem tag="a" href="#" action>
         Password
       </ListGroupItem>
-      <ListGroupItem tag="a" href="#" action>
-        Privacy and safety
-      </ListGroupItem>
-      <ListGroupItem tag="a" href="#" action>
-        Email notifications
-      </ListGroupItem>
-      <ListGroupItem tag="a" href="#" action>
-        Web notifications
-      </ListGroupItem>
-      <ListGroupItem tag="a" href="#" action>
-        Widgets
-      </ListGroupItem>
-      <ListGroupItem tag="a" href="#" action>
-        Your data
-      </ListGroupItem>
-      <ListGroupItem tag="a" href="#" action>
-        Delete account{" "}
-      </ListGroupItem>
-    </ListGroup>
+     </ListGroup>
   </Card>
 );
+
+function handleFileSelect(evt) {
+  var files = evt.target.files; // FileList object
+
+  // files is a FileList of File objects. List some properties.
+  var output = [];
+  for (var i = 0, f; f = files[i]; i++) {
+    output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+                f.size, ' bytes, last modified: ',
+                f.lastModifiedDate.toLocaleDateString(), '</li>');
+  }
+  document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+}
 
 const PublicInfo = () => (
   <Card>
     <CardHeader>
-      <div className="card-actions float-right">
-        <UncontrolledDropdown>
-          <DropdownToggle tag="a">
-            <MoreHorizontal />
-          </DropdownToggle>
-          <DropdownMenu right>
-            <DropdownItem>Action</DropdownItem>
-            <DropdownItem>Another Action</DropdownItem>
-            <DropdownItem>Something else here</DropdownItem>
-          </DropdownMenu>
-        </UncontrolledDropdown>
-      </div>
+      
       <CardTitle tag="h5" className="mb-0">
-        Public info
+        Información Publica
       </CardTitle>
     </CardHeader>
     <CardBody>
@@ -87,8 +71,8 @@ const PublicInfo = () => (
         <Row>
           <Col md="8">
             <FormGroup>
-              <Label for="inputUsername">Username</Label>
-              <Input type="text" id="inputUsername" placeholder="Username" />
+              <Label for="inputUsername">Nombre de Usuario</Label>
+              <Input type="text" id="inputUsername" placeholder="Nombre de Usuario" />
             </FormGroup>
             <FormGroup>
               <Label for="inputBio">Biography</Label>
@@ -110,7 +94,7 @@ const PublicInfo = () => (
                 height="128"
               />
               <div className="mt-2">
-                <Button color="primary">
+                <Button color="primary" onClick={handleFileSelect}>
                   <FontAwesomeIcon icon={faUpload} /> Upload
                 </Button>
               </div>
@@ -230,10 +214,10 @@ const Settings = () => (
     <h1 className="h3 mb-3">Settings</h1>
 
     <Row>
-      <Col md="3" xl="2">
+      <Col md="4" xl="3">
         <Navigation />
       </Col>
-      <Col md="9" xl="10">
+      <Col md="8" xl="9">
         <PublicInfo />
         <PrivateInfo />
       </Col>
